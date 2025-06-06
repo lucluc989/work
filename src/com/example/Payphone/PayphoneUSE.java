@@ -8,19 +8,30 @@ public class PayphoneUSE {
     public static void main (String[] arg) throws InterruptedException {
 
         PayPhone payPhone = new PayPhone();
-        payPhone.insertCoin(new Coin(10));
-        payPhone.insertCoin(new Coin(50));
+        out.println(payPhone.getScreen());
+
+
+        payPhone.insertCoin(Coin.FIFTYPENCE);
 
 
         Scanner key = new Scanner(in);
+
         out.println("Please Enter how much would you like to pay");
         out.println("£.pp");
         double amount = key.nextDouble();
-        out.println("type go");
-        var input = key.next();
-        if (input.equals("go")) {
-            payPhone.Execute();
+
+        boolean dial = false;
+
+        while (!dial) {
+            if(key.next().equals("D")) {
+                dial = true;
+                payPhone
+            }else{
+                Coin.valueOfValue(key.nextInt());
+            }
         }
+
+
 
         input = key.next();
         if (input.equalsIgnoreCase("end")){
@@ -28,6 +39,6 @@ public class PayphoneUSE {
         }
         out.println("You put in: £"+amount);
         out.println("You would get back");
-    out.println(payPhone.leftvalue(amount, payPhone.cost()));
+        out.println(payPhone.leftvalue(amount, payPhone.cost()));
     }
 }

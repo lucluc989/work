@@ -16,6 +16,11 @@ public class PayPhone {
     private Thread timetaken;
     private double cost;
     private ArrayList<Coin> insertedCoins = new ArrayList<Coin>();
+    private String screenText;
+
+    public PayPhone(){
+        screenText = "Welcome to the PayPhone 2000\nPlease insert coin...";
+    }
 
     public double getCostperSec() {
         return PperSec;
@@ -120,6 +125,13 @@ public class PayPhone {
 
     public void insertCoin(Coin coin) {
         insertedCoins.add(coin);
+    }
+
+    public String getScreen() {
+        return screenText;
+    }
+    private void setScreen(String screenText){
+        this.screenText = screenText;
     }
 }
 
