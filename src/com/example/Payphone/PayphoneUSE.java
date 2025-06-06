@@ -7,7 +7,11 @@ import static java.lang.System.out;
 public class PayphoneUSE {
     public static void main (String[] arg) throws InterruptedException {
 
-        PayPhone RingRing = new PayPhone();
+        PayPhone payPhone = new PayPhone();
+        payPhone.insertCoin(new Coin(10));
+        payPhone.insertCoin(new Coin(50));
+
+
         Scanner key = new Scanner(in);
         out.println("Please Enter how much would you like to pay");
         out.println("£.pp");
@@ -15,15 +19,15 @@ public class PayphoneUSE {
         out.println("type go");
         var input = key.next();
         if (input.equals("go")) {
-            RingRing.Execute();
+            payPhone.Execute();
         }
 
         input = key.next();
         if (input.equalsIgnoreCase("end")){
-            RingRing.Turnoff();
+            payPhone.Turnoff();
         }
         out.println("You put in: £"+amount);
         out.println("You would get back");
-    out.println(RingRing.leftvalue(amount, RingRing.cost()));
+    out.println(payPhone.leftvalue(amount, payPhone.cost()));
     }
 }

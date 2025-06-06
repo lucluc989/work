@@ -1,6 +1,7 @@
 package com.example.Payphone;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static java.lang.System.out;
 
@@ -14,7 +15,7 @@ public class PayPhone {
     private double PperSec;
     private Thread timetaken;
     private double cost;
-
+    private ArrayList<Coin> insertedCoins = new ArrayList<Coin>();
 
     public double getCostperSec() {
         return PperSec;
@@ -115,6 +116,10 @@ public class PayPhone {
         out.print(twocoin + ": 2p ");
         out.print(onecoin + ": 1p ");
         return "";
+    }
+
+    public void insertCoin(Coin coin) {
+        insertedCoins.add(coin);
     }
 }
 
