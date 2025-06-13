@@ -1,9 +1,7 @@
-package com.example.Payphone2;
+package projects.Payphone2;
 
-import com.example.Payphone.PayPhone;
 import  java.util.Scanner;
 
-import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class RunPayPhone2 {

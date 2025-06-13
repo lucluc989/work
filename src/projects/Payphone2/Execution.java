@@ -1,7 +1,5 @@
-package com.example.Payphone2;
+package projects.Payphone2;
 
-import java.time.LocalTime;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static java.lang.System.in;

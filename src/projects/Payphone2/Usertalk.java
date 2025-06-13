@@ -1,4 +1,4 @@
-package com.example.Payphone2;
+package projects.Payphone2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

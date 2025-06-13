@@ -1,4 +1,4 @@
-package com.example.Payphone;
+package projects.Payphone;
 
 import java.util.Scanner;
 import static java.lang.System.in;
