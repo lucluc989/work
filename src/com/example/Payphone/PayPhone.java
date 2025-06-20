@@ -2,6 +2,7 @@ package com.example.Payphone;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.System.out;
 
@@ -22,9 +23,7 @@ public class PayPhone {
         screenText = "Welcome to the PayPhone 2000\nPlease insert coin...";
     }
 
-    public double getCostperSec() {
-        return PperSec;
-    }
+
 
     public boolean isPhoneactive() {
         return Phoneactive;
@@ -39,9 +38,8 @@ public class PayPhone {
         Current = LocalTime.now();
         PperSec = 3.5;
         Phoneactive = true;
-        out.print("Start Time: ");
-        out.printf(format(), Current);
-        out.println("Phone on");
+
+        out.println("Call started");
 
         timetaken = new Thread(() -> {
             int seconds = 0;
@@ -49,7 +47,9 @@ public class PayPhone {
                 while (isPhoneactive()) {
                     Thread.sleep(1000);
                     seconds++;
-                    System.out.println(seconds);
+
+
+                    System.out.println("Remaining " + ((valueOfAllCoinsInserted() /PperSec) - seconds) + "seconds");
                 }
             } catch (InterruptedException e) {
                 System.out.println("null");
@@ -123,8 +123,18 @@ public class PayPhone {
         return "";
     }
 
+    private int valueOfAllCoinsInserted(){
+        AtomicInteger total = new AtomicInteger();
+
+        insertedCoins.forEach(e -> {
+            total.addAndGet(e.value);
+        });
+        return total.get();
+    }
+
     public void insertCoin(Coin coin) {
         insertedCoins.add(coin);
+        setScreen(coin.label + " added\nTotal " + valueOfAllCoinsInserted());
     }
 
     public String getScreen() {
@@ -132,6 +142,15 @@ public class PayPhone {
     }
     private void setScreen(String screenText){
         this.screenText = screenText;
+    }
+
+    public void dial(String number) {
+        setScreen("calling\n" + number);
+        try {
+            Execute();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
